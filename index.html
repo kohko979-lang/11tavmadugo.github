@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta name="google-site-verification" content="cWSUR59dMMQPUP2_qgbre7k4MDc-U1Rdc1fzIwglGxE" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kelas XI TAV | SMK Ma'arif 2 Gombong</title>
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="css/style.css">
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         BACKGROUND
+         ===================================================== -->
+
+    <canvas id="particleBackground"></canvas>
+
+    <div class="background-glow"></div>
+
+
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+
+    <header>
+
+        <div class="container">
+
+            <div class="logo">
+
+                <!-- FOTO PENGGANTI ORANG + PAPAN TULIS -->
+
+                <img
+                    src="Screenshot 2026-09-15 185606.png"
+                    alt="Logo XI TAV SMK Ma'arif 2 Gombong"
+                    onclick="bukaFoto(this)"
+                >
+
+                <h1>
+                    Kelas
+                    <span>XI TAV</span>
+                </h1>
+
+            </div>
+
+
+            <nav>
+
+                <ul id="navMenu">
+
+                    <li>
+                        <a href="#home"
+                           class="active">
+                            Beranda
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#about">
+                            Tentang
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#schedule">
+                            Jadwal
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#students">
+                            Siswa
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#gallery">
+                            Galeri
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#announce">
+                            Info
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <button
+                class="theme-toggle"
+                id="themeToggle"
+                type="button"
+                aria-label="Aktifkan mode malam"
+                aria-pressed="false">
+
+                <i class="fas fa-moon"></i>
+                <span>Mode malam</span>
+
+            </button>
+
+
+            <div
+                class="hamburger"
+                id="hamburger">
+
+                <i class="fas fa-bars"></i>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section
+        class="hero"
+        id="home">
+
+        <div class="container">
+
+            <div class="hero-text">
+
+                <h2>
+
+                    <i class="fas fa-star"></i>
+
+                    Kelas XI TAV
+
+                </h2>
+
+                <p>
+                    Dokumentasi perjalanan, pembelajaran, dan
+                    kebersamaan kami di SMK Ma'arif 2 Gombong.
+
+                </p>
+
+                <a
+                    href="#about"
+                    class="btn">
+
+                    Kenali Kami
+
+                </a>
+
+            </div>
+
+
+            <div class="hero-image">
+
+                <img
+                    src="kelas 11(1).jpeg"
+                    alt="Foto Kelas Inspirasi"
+                    onclick="bukaFoto(this)"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         TENTANG KELAS
+         ===================================================== -->
+
+    <section
+        class="about-class"
+        id="about">
+
+        <div class="container">
+
+            <div class="hero-title">
+
+
+                <!-- FOTO KELAS -->
+
+                <div class="hero-image">
+
+                    <img
+                        src="kelas 11(1).jpeg"
+                        alt="Tentang Kelas"
+                        onclick="bukaFoto(this)"
+                    >
+
+                </div>
+
+
+                <!-- INFORMASI KELAS -->
+
+                <div class="about-text">
+
+                    <h4>
+                        Tentang Kelas 11 TAV
+                    </h4>
+
+
+                    <p>
+                        Kami adalah kelas 11 TAV yang berasal dari sekolah SMK MA'ARIF 2 GOMBONG.
+
+                        Kelas 11 TAV adalah rumah
+                        bagi 30 siswa berprestasi
+                        yang selalu mendukung satu
+                        sama lain.
+
+                        Kami dikenal dengan kekompakan,
+                        kreativitas, dan semangat belajar
+                        yang tinggi.
+                        Dibalik kabut bercahaya senja, tempat berkumpul para anggota tav tangguh.
+                    </p>
+
+
+                    <!-- =================================================
+                         TIGA KARTU
+                         WALI KELAS - SISWA - ANGKATAN
+                         ================================================= -->
+
+                    <div class="about-meta">
+
+
+                        <!-- WALI KELAS -->
+
+                        <div class="wali-kelas-card">
+
+                            <img
+                                src="iqbal.png"
+                                alt="Foto Wali Kelas"
+                                onclick="bukaFoto(this)"
+                            >
+
+                            <div>
+
+                                <span class="meta-item">
+
+                                    <i class="fas fa-user-tie"></i>
+
+                                    Wali Kelas
+
+                                </span>
+
+                                <strong>
+                                  Pak Fardyansyah Iqbal Fauzi, S.Pd
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- JUMLAH SISWA -->
+
+                        <div class="info-meta-card">
+
+                            <div class="info-meta-icon">
+
+                                <i class="fas fa-users"></i>
+
+                            </div>
+
+                            <div>
+
+                                <span class="meta-item">
+                                    Jumlah Siswa
+                                </span>
+
+                                <strong>
+                                    30 Siswa
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ANGKATAN -->
+
+                        <div class="info-meta-card">
+
+                            <div class="info-meta-icon">
+
+                                <i class="fas fa-calendar-alt"></i>
+
+                            </div>
+
+                            <div>
+
+                                <span class="meta-item">
+                                    Angkatan
+                                </span>
+
+                                <strong>
+                                    2024
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         STRUKTUR ORGANISASI
+         ===================================================== -->
+
+    <section class="struktur">
+
+        <h1>
+            STRUKTUR ORGANISASI
+        </h1>
+
+
+        <!-- KETUA -->
+
+        <div class="jabatan">
+
+            <img
+                src="rofi.jpeg"
+                alt="Ketua"
+                onclick="bukaFoto(this)"
+            >
+
+            <h3>
+                Rofiatu Latifah
+            </h3>
+
+            <p>
+                Ketua
+            </p>
+
+        </div>
+
+
+        <div class="garis-vertikal"></div>
+
+
+        <!-- WAKIL -->
+
+        <div class="jabatan">
+
+            <img
+                src=""
+                alt="Wakil Ketua"
+                onclick="bukaFoto(this)"
+            >
+
+            <h3>
+                Farhan Syahrul Romadhon
+            </h3>
+
+            <p>
+                Wakil Ketua
+            </p>
+
+        </div>
+
+
+        <div class="garis-vertikal"></div>
+
+
+        <!-- PENGURUS -->
+
+        <div class="baris pengurus-inti">
+
+
+            <div class="jabatan">
+
+                <img
+                    src="elsi.jpeg"
+                    alt="Sekretaris"
+                    onclick="bukaFoto(this)"
+                >
+
+                <h3>
+                    Elshi Alisya Putry
+                </h3>
+
+                <p>
+                    Sekretaris
+                </p>
+
+            </div>
+
+
+            <div class="jabatan">
+
+                <img
+                    src="evi.jpeg"
+                    alt="Sekretaris"
+                    onclick="bukaFoto(this)"
+                >
+
+                <h3>
+                    Evi Anisa Putri
+                </h3>
+
+                <p>
+                    Sekretaris
+                </p>
+
+            </div>
+
+
+            <div class="jabatan">
+
+                <img
+                    src="safa.jpeg"
+                    alt="Bendahara"
+                    onclick="bukaFoto(this)"
+                >
+
+                <h3>
+                    Shafa Iqra Rahmania
+                </h3>
+
+                <p>
+                    Bendahara 1
+                </p>
+
+            </div>
+
+
+            <div class="jabatan">
+
+                <img
+                src="esa.jpeg"
+                    alt="Bendahara"
+                    onclick="bukaFoto(this)"
+                >
+
+                <h3>
+                    Neyysha Salsabila Nuraini
+                </h3>
+
+                <p>
+                    Bendahara 2
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="garis-vertikal"></div>
+
+
+        <!-- DIVISI -->
+
+        <div class="baris divisi-kelas">
+
+
+            <div class="jabatan">
+
+                <img
+                src=""
+                    alt="Divisi Acara"
+                    onclick="bukaFoto(this)"
+                >
+
+                <h3>
+                    Nama Anggota
+                </h3>
+
+                <p>
+                    Divisi Acara
+                </p>
+
+            </div>
+
+
+            <div class="jabatan">
+
+                <img
+                src=""
+                    alt="Divisi Humas"
+                    onclick="bukaFoto(this)"
+                >
+
+                <h3>
+                    Nama Anggota
+                </h3>
+
+                <p>
+                    Divisi Humas
+                </p>
+
+            </div>
+
+
+            <div class="jabatan">
+
+                <img
+                src=""
+                    alt="Divisi Dokumentasi"
+                    onclick="bukaFoto(this)"
+                >
+
+                <h3>
+                    Nama Anggota
+                </h3>
+
+                <p>
+                    Divisi Dokumentasi
+                </p>
+
+            </div>
+
+
+            <div class="jabatan">
+
+                <img
+                src=""
+                    alt="Divisi Perlengkapan"
+                    onclick="bukaFoto(this)"
+                >
+
+                <h3>
+                    Nama Anggota
+                </h3>
+
+                <p>
+                    Divisi Perlengkapan
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         JADWAL
+         ===================================================== -->
+
+    <section
+        class="schedule"
+        id="schedule">
+
+        <div class="container">
+
+
+            <div class="section-title">
+
+                <h3>
+                    Jadwal Pelajaran
+                </h3>
+
+                <p>
+                    Rutinitas belajar kami
+                    dari Senin sampai Sabtu.
+                </p>
+
+            </div>
+
+
+            <div class="schedule-top">
+
+
+                <div class="schedule-img">
+
+                    <img
+                        src="kelas 11(1).jpeg"
+                        alt="Suasana Belajar"
+                        onclick="bukaFoto(this)"
+                    >
+
+                </div>
+
+
+                <div class="schedule-desc">
+
+                    <p>
+
+                        Setiap hari kami belajar
+                        dengan semangat, diajar oleh
+                        guru-guru terbaik.
+
+                        Jadwal di bawah ini adalah
+                        rutinitas mingguan kami.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Senin</th>
+                            <th>Selasa</th>
+                            <th>Rabu</th>
+                            <th>Kamis</th>
+                            <th>Jumat</th>
+                            <th>Sabtu</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                        <tr>
+
+                            <td>
+                                <span class="mapel">
+                                    PSD
+                                </span>
+
+                                <span class="guru">
+                                    Fardyansyah Iqbal Fauzi, S.Pd
+                                </span>
+                            </td>
+
+                            <td>
+                                <span class="mapel">
+                                    MAPIL
+                                </span>
+
+                                <span class="guru">
+                                    NUR KHOLIK, S.T.
+                                </span>
+                            </td>
+
+                            <td>
+                                <span class="mapel">
+                                    KIK
+                                </span>
+
+                                <span class="guru">
+                                    NUR KHOLIK, S.T.
+                                </span>
+                            </td>
+
+                            <td>
+                                <span class="mapel">
+                                    PSA
+                                </span>
+
+                                <span class="guru">
+                                    NUR KHOLIK, S.T.
+                                </span>
+                            </td>
+
+                            <td>
+                                <span class="mapel">
+                                    PSV
+                                </span>
+
+                                <span class="guru">
+                                    Fardyansyah Iqbal Fauzi, S.Pd
+                                </span>
+                            </td>
+
+                            <td>
+                                <span class="mapel">
+                                    KWU
+                                </span>
+
+                                <span class="guru">
+                                    NUR KHOLIK, S.T.
+                                </span>
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DAFTAR SISWA
+         ===================================================== -->
+
+    <section
+        class="students"
+        id="students">
+
+        <div class="container">
+
+
+            <div class="section-title">
+
+                <h3>
+                    Daftar Siswa
+                </h3>
+
+                <p>
+                    30 siswa hebat yang membuat
+                    kelas ini istimewa.
+                </p>
+
+            </div>
+
+
+            <div
+                class="student-grid"
+                id="studentGrid">
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         GALERI
+         ===================================================== -->
+
+    <section
+        class="gallery"
+        id="gallery">
+
+        <div class="container">
+
+
+            <div class="section-title">
+
+                <h3>
+                    Galeri Kegiatan
+                </h3>
+
+                <p>
+                    Momen kebersamaan dan prestasi kami.
+                </p>
+
+            </div>
+
+
+            <div
+                class="gallery-grid"
+                id="galleryGrid">
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PENGUMUMAN
+         ===================================================== -->
+
+    <section
+        class="announcement"
+        id="announce">
+
+        <div class="container">
+
+
+            <div class="section-title">
+
+                <h3>
+                    Agenda &amp; Pengumuman
+                </h3>
+
+                <p>
+                    Hal penting yang perlu kita siapkan bersama.
+                </p>
+
+            </div>
+
+
+            <div class="announce-wrap">
+
+
+                <div class="announce-img">
+
+                    <img
+                        src="1.jpeg"
+                        alt="Kegiatan Kelas XI TAV"
+                    >
+
+                </div>
+
+
+                <div class="announce-text">
+
+                    <h4>
+
+                        <i
+                            class="fas fa-bullhorn"
+                            style="color:#00eaff;margin-right:10px;">
+                        </i>
+
+                        Persiapan ASTS Gasal 2026
+
+                    </h4>
+
+
+                    <p>
+
+                        Asesmen Sumatif Tengah Semester akan
+                        dilaksanakan pada <strong>21–26 September 2026</strong>.
+                        Manfaatkan waktu yang ada untuk belajar bersama,
+                        melengkapi catatan, dan bertanya kepada guru jika
+                        ada materi yang belum dipahami.
+
+                    </p>
+
+
+                    <div class="date">
+
+                        <i class="far fa-calendar-alt"></i>
+
+                        Diperbarui:
+                        15 September 2026
+
+                    </div>
+
+                    <div class="announce-tags">
+                        <span><i class="fas fa-book-open"></i> Belajar bersama</span>
+                        <span><i class="fas fa-clock"></i> Siapkan dari sekarang</span>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer>
+
+        <div class="container">
+
+            <p>
+
+                &copy; 2026
+                Kelas Inspirasi - 11 TAV
+                | MEDIA SOSIAL KAMI &gt;
+
+            </p>
+
+
+            <div class="social">
+
+
+                <a
+                    href="https://www.instagram.com/______unesco/"
+                    target="_blank"
+                    aria-label="Instagram">
+
+                    <i class="fab fa-instagram"></i>
+
+                </a>
+
+
+                <a
+                    href="https://wa.me/62895634018120"
+                    target="_blank"
+                    aria-label="WhatsApp">
+
+                    <i class="fab fa-whatsapp"></i>
+
+                </a>
+
+
+                <a
+                    href="https://www.tiktok.com/@its.tavxi"
+                    target="_blank"
+                    aria-label="TikTok">
+
+                    <i class="fab fa-tiktok"></i>
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+         POPUP FOTO
+         ===================================================== -->
+
+    <div
+        class="photo-modal"
+        id="photoModal">
+
+        <span
+            class="close-photo"
+            id="closePhoto">
+
+            &times;
+
+        </span>
+
+
+        <img
+            id="photoModalImg"
+            src=""
+            alt="Foto diperbesar"
+        >
+
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    
+
+    
+
+    <script src="js/script.js"></script>
+</body>
+</html>

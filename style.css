@@ -1,0 +1,2417 @@
+/* =====================================================
+           RESET
+           ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #010308;
+            color: #e9fdff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+
+        /* =====================================================
+           CANVAS BACKGROUND
+           ===================================================== */
+
+        #particleBackground {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -8;
+            pointer-events: none;
+        }
+
+        .background-glow {
+            position: fixed;
+            inset: 0;
+            z-index: -9;
+            pointer-events: none;
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    ellipse at 50% 45%,
+                    rgba(0,238,255,.13),
+                    transparent 31%
+                ),
+                radial-gradient(
+                    ellipse at 12% 70%,
+                    rgba(0,125,255,.10),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    ellipse at 88% 22%,
+                    rgba(0,255,190,.075),
+                    transparent 25%
+                ),
+                linear-gradient(
+                    120deg,
+                    #010207 0%,
+                    #031019 42%,
+                    #01060b 100%
+                );
+        }
+
+        .background-glow::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    rgba(0,235,255,.027) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(0,235,255,.027) 1px,
+                    transparent 1px
+                );
+
+            background-size: 42px 42px;
+        }
+
+        .background-glow::after {
+            content: "";
+            position: absolute;
+            inset: -10%;
+
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent 0 4px,
+                    rgba(0,238,255,.010) 5px 6px
+                );
+
+            opacity: .75;
+        }
+
+
+        /* =====================================================
+           HEADER
+           ===================================================== */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            padding: 14px 0;
+
+            background: rgba(0,3,8,.84);
+
+            border-bottom:
+                1px solid rgba(0,239,255,.28);
+
+            backdrop-filter: blur(16px);
+
+            box-shadow:
+                0 8px 30px rgba(0,0,0,.35);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        /* =====================================================
+           LOGO FOTO
+           ===================================================== */
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border:
+                2px solid #00eaff;
+
+            box-shadow:
+                0 0 10px rgba(0,234,255,.7),
+                0 0 25px rgba(0,234,255,.25);
+
+            transition: .3s ease;
+
+            cursor: pointer;
+        }
+
+        .logo img:hover {
+            transform: scale(1.08);
+
+            box-shadow:
+                0 0 15px rgba(0,234,255,.9),
+                0 0 35px rgba(0,234,255,.4);
+        }
+
+        .logo h1 {
+            color: #e9fdff;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo h1 span {
+            color: #00eaff;
+
+            text-shadow:
+                0 0 10px rgba(0,234,255,.6);
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+           ===================================================== */
+
+        nav ul {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: #d9fbff;
+            font-size: 16px;
+            font-weight: 500;
+
+            position: relative;
+
+            transition: .3s ease;
+        }
+
+        nav ul li a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -7px;
+
+            width: 0;
+            height: 2px;
+
+            background: #00eaff;
+
+            box-shadow:
+                0 0 10px #00eaff;
+
+            transition: .3s ease;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: #00eaff;
+        }
+
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            color: #00eaff;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           HERO
+           ===================================================== */
+
+        .hero {
+            min-height: 580px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 70px 0;
+
+            background: transparent;
+        }
+
+        .hero .container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h2 {
+            font-size: 52px;
+            color: #b9fdff;
+
+            text-shadow:
+                0 0 10px rgba(0,234,255,.7),
+                0 0 35px rgba(0,234,255,.25);
+
+            margin-bottom: 15px;
+        }
+
+        .hero-text h2 i {
+            color: #00eaff;
+
+            text-shadow:
+                0 0 15px #00eaff;
+        }
+
+        .hero-text p {
+            color: #b8dce4;
+            font-size: 20px;
+            max-width: 620px;
+            margin-bottom: 28px;
+        }
+
+        .btn {
+            display: inline-block;
+
+            padding: 12px 30px;
+
+            background: #00eaff;
+            color: #001018;
+
+            border-radius: 40px;
+
+            font-weight: 700;
+
+            box-shadow:
+                0 0 14px rgba(0,234,255,.65),
+                0 0 34px rgba(0,234,255,.22);
+
+            transition: .3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.03);
+
+            box-shadow:
+                0 0 20px rgba(0,234,255,.9),
+                0 0 45px rgba(0,234,255,.35);
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 450px;
+
+            border-radius: 24px;
+
+            border:
+                2px solid rgba(0,234,255,.5);
+
+            box-shadow:
+                0 0 20px rgba(0,234,255,.25),
+                0 20px 50px rgba(0,0,0,.5);
+
+            cursor: pointer;
+
+            transition: .3s ease;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.02);
+
+            box-shadow:
+                0 0 30px rgba(0,234,255,.45),
+                0 20px 60px rgba(0,0,0,.6);
+        }
+
+
+        /* =====================================================
+           SECTION TITLE
+           ===================================================== */
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h3 {
+            display: inline-block;
+
+            color: #b9fdff;
+
+            font-size: 30px;
+
+            text-shadow:
+                0 0 9px rgba(0,238,255,.65),
+                0 0 30px rgba(0,238,255,.20);
+
+            position: relative;
+        }
+
+        .section-title h3::after {
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+            bottom: -10px;
+
+            transform: translateX(-50%);
+
+            width: 60px;
+            height: 4px;
+
+            background: #00edff;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 0 12px #00edff,
+                0 0 30px rgba(0,237,255,.72);
+        }
+
+        .section-title p {
+            color: #b8dce4;
+
+            max-width: 600px;
+
+            margin:
+                20px auto 0;
+        }
+
+
+        /* =====================================================
+           ABOUT
+           ===================================================== */
+
+        .about-class {
+            padding: 70px 0;
+        }
+
+        .hero-title {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 45px;
+
+            align-items: center;
+        }
+
+        .about-text h4 {
+            font-size: 28px;
+
+            color: #8ff8ff;
+
+            margin-bottom: 15px;
+
+            text-shadow:
+                0 0 12px rgba(0,234,255,.3);
+        }
+
+        .about-text p {
+            color: #b8dce4;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* =====================================================
+           ABOUT META
+           SEMUA DIBUAT MENJADI KARTU
+           ===================================================== */
+
+        .about-meta {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 14px;
+
+            margin-top: 20px;
+        }
+
+
+        /* KARTU WALI + SISWA + ANGKATAN */
+
+        .wali-kelas-card,
+        .info-meta-card {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 10px 14px;
+
+            border-radius: 16px;
+
+            background:
+                rgba(3,20,31,.68);
+
+            border:
+                1px solid
+                rgba(0,235,255,.18);
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,.25),
+                0 0 12px rgba(0,234,255,.06);
+
+            backdrop-filter:
+                blur(10px);
+
+            transition: .3s ease;
+        }
+
+
+        .wali-kelas-card:hover,
+        .info-meta-card:hover {
+
+            transform:
+                translateY(-3px);
+
+            border-color:
+                rgba(0,235,255,.5);
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,.35),
+                0 0 18px rgba(0,234,255,.15);
+        }
+
+
+        /* FOTO WALI */
+
+        .wali-kelas-card img {
+
+            width: 64px;
+            height: 64px;
+
+            min-width: 64px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border:
+                2px solid #00eaff;
+
+            box-shadow:
+                0 0 12px rgba(0,234,255,.55);
+
+            cursor: pointer;
+        }
+
+
+        /* IKON SISWA & ANGKATAN */
+
+        .info-meta-icon {
+
+            width: 48px;
+            height: 48px;
+
+            min-width: 48px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(0,234,255,.08);
+
+            border:
+                1px solid
+                rgba(0,234,255,.35);
+
+            color: #00eaff;
+
+            font-size: 20px;
+
+            box-shadow:
+                0 0 10px
+                rgba(0,234,255,.2);
+        }
+
+
+        .wali-kelas-card .meta-item,
+        .info-meta-card .meta-item {
+
+            display: block;
+
+            color: #b8dce4;
+
+            font-size: 13px;
+
+            margin: 0;
+        }
+
+
+        .wali-kelas-card strong,
+        .info-meta-card strong {
+
+            display: block;
+
+            color: #8ff8ff;
+
+            font-size: 15px;
+
+            margin-top: 2px;
+
+            white-space: nowrap;
+        }
+
+
+        /* =====================================================
+           STRUKTUR
+           ===================================================== */
+
+        .struktur {
+            padding: 70px 20px;
+            text-align: center;
+        }
+
+        .struktur h1 {
+            color: #b9fdff;
+
+            margin-bottom: 40px;
+
+            text-shadow:
+                0 0 10px
+                rgba(0,234,255,.5);
+        }
+
+        .jabatan {
+
+            display: inline-block;
+
+            min-width: 180px;
+
+            padding: 18px 20px;
+
+            margin: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(2,20,29,.76),
+                    rgba(1,9,15,.68)
+                );
+
+            border:
+                1px solid
+                rgba(0,235,255,.19);
+
+            border-radius: 16px;
+
+            box-shadow:
+                0 16px 42px rgba(0,0,0,.48),
+                inset 0 1px rgba(170,255,255,.06);
+
+            backdrop-filter:
+                blur(11px);
+
+            border-top:
+                3px solid #00eaff;
+
+            transition: .3s ease;
+        }
+
+        .jabatan:hover {
+
+            transform:
+                translateY(-5px);
+
+            border-color:
+                rgba(0,235,255,.5);
+
+            box-shadow:
+                0 0 25px
+                rgba(0,234,255,.15);
+        }
+
+        .jabatan img {
+
+            width: 80px;
+            height: 80px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border:
+                2px solid #00eaff;
+
+            margin-bottom: 10px;
+
+            cursor: pointer;
+        }
+
+        .jabatan h3 {
+            color: #8ff8ff;
+            margin: 5px 0;
+        }
+
+        .jabatan p {
+            color: #b8dce4;
+            font-size: 14px;
+        }
+
+        .garis-vertikal {
+
+            width: 2px;
+            height: 35px;
+
+            margin: auto;
+
+            background:
+                rgba(0,234,255,.45);
+
+            box-shadow:
+                0 0 9px
+                rgba(0,234,255,.4);
+        }
+
+        .garis-horizontal {
+
+            width: 70%;
+            height: 2px;
+
+            margin: 10px auto;
+
+            background:
+                rgba(0,234,255,.45);
+        }
+
+        .baris {
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 20px;
+        }
+
+
+        /* =====================================================
+           JADWAL
+           ===================================================== */
+
+        .schedule {
+            padding: 70px 0;
+        }
+
+        .schedule-top {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            align-items: center;
+
+            gap: 30px;
+
+            margin-bottom: 30px;
+        }
+
+        .schedule-img {
+            flex: 1;
+            min-width: 240px;
+        }
+
+        .schedule-img img {
+
+            width: 100%;
+
+            max-height: 220px;
+
+            object-fit: cover;
+
+            border-radius: 20px;
+
+            border:
+                1px solid
+                rgba(0,234,255,.25);
+
+            cursor: pointer;
+        }
+
+        .schedule-desc {
+            flex: 2;
+        }
+
+        .schedule-desc p {
+            color: #b8dce4;
+            font-size: 18px;
+        }
+
+        .table-wrap {
+
+            overflow-x: auto;
+
+            background:
+                rgba(2,15,23,.78);
+
+            border:
+                1px solid
+                rgba(0,235,255,.19);
+
+            border-radius: 20px;
+
+            padding: 4px;
+
+            box-shadow:
+                0 16px 42px rgba(0,0,0,.48);
+
+            backdrop-filter:
+                blur(11px);
+        }
+
+        table {
+
+            width: 100%;
+
+            border-collapse:
+                collapse;
+
+            min-width: 700px;
+        }
+
+        th {
+
+            background:
+                rgba(0,100,125,.78);
+
+            color: #eaffff;
+
+            padding: 14px 12px;
+
+            text-align: left;
+
+            border-bottom:
+                1px solid
+                rgba(0,234,255,.25);
+        }
+
+        td {
+
+            padding: 14px 12px;
+
+            border-bottom:
+                1px solid
+                rgba(0,234,255,.12);
+
+            color: #b8dce4;
+        }
+
+        tr:hover td {
+            background:
+                rgba(0,234,255,.04);
+        }
+
+        .mapel {
+
+            display: block;
+
+            color: #8ff8ff;
+
+            font-weight: 600;
+        }
+
+        .guru {
+
+            display: block;
+
+            color: #82aeb8;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           SISWA
+           ===================================================== */
+
+        .students {
+            padding: 70px 0;
+        }
+
+        .student-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fill,
+                    minmax(180px,1fr)
+                );
+
+            gap: 24px;
+        }
+
+        .student-card {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(2,20,29,.76),
+                    rgba(1,9,15,.68)
+                );
+
+            border:
+                1px solid
+                rgba(0,235,255,.19);
+
+            border-radius: 16px;
+
+            padding: 20px 12px;
+
+            text-align: center;
+
+            box-shadow:
+                0 16px 42px rgba(0,0,0,.48);
+
+            backdrop-filter:
+                blur(11px);
+
+            transition: .3s ease;
+        }
+
+        .student-card:hover {
+
+            transform:
+                translateY(-6px);
+
+            border-color:
+                rgba(0,235,255,.5);
+
+            box-shadow:
+                0 0 25px
+                rgba(0,234,255,.12);
+        }
+
+        .student-card .avatar img {
+
+            width: 72px;
+            height: 72px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border:
+                2px solid #00eaff;
+
+            background:
+                #03202a;
+
+            box-shadow:
+                0 0 12px
+                rgba(0,234,255,.3);
+
+            cursor: pointer;
+        }
+
+        .student-card .name {
+
+            color: #8ff8ff;
+
+            font-weight: 600;
+
+            margin-top: 8px;
+        }
+
+        .student-card .nis {
+
+            color: #82aeb8;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           GALERI
+           ===================================================== */
+
+        .gallery {
+            padding: 70px 0;
+        }
+
+        .gallery-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(220px,1fr)
+                );
+
+            gap: 20px;
+        }
+
+        .gallery-item {
+
+            height: 180px;
+
+            overflow: hidden;
+
+            border-radius: 16px;
+
+            border:
+                1px solid
+                rgba(0,234,255,.15);
+
+            box-shadow:
+                0 10px 30px
+                rgba(0,0,0,.4);
+        }
+
+        .gallery-item img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            cursor: pointer;
+
+            transition: .3s ease;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+
+
+        /* =====================================================
+           ANNOUNCEMENT
+           ===================================================== */
+
+        .announcement {
+            padding: 70px 0;
+        }
+
+        .announce-wrap {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 30px;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(2,20,29,.76),
+                    rgba(1,9,15,.68)
+                );
+
+            border:
+                1px solid
+                rgba(0,235,255,.19);
+
+            box-shadow:
+                0 16px 42px rgba(0,0,0,.48);
+
+            backdrop-filter:
+                blur(11px);
+
+            border-left:
+                5px solid #00eaff;
+        }
+
+        .announce-img {
+            width: 180px;
+            flex-shrink: 0;
+        }
+
+        .announce-img img {
+
+            width: 100%;
+
+            height: 120px;
+
+            object-fit: cover;
+
+            border-radius: 15px;
+        }
+
+        .announce-text h4 {
+
+            color: #8ff8ff;
+
+            font-size: 20px;
+
+            margin-bottom: 8px;
+        }
+
+        .announce-text p {
+
+            color: #b8dce4;
+        }
+
+        .date {
+
+            color: #82aeb8;
+
+            font-size: 14px;
+
+            margin-top: 8px;
+        }
+
+
+        /* =====================================================
+           POPUP FOTO
+           ===================================================== */
+
+        .photo-modal {
+
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 9999;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 30px;
+
+            background:
+                rgba(0,0,0,.90);
+        }
+
+        .photo-modal.show {
+            display: flex;
+        }
+
+        .photo-modal img {
+
+            max-width: 92vw;
+
+            max-height: 88vh;
+
+            object-fit: contain;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 0 40px
+                rgba(0,234,255,.2);
+        }
+
+        .close-photo {
+
+            position: absolute;
+
+            top: 18px;
+            right: 28px;
+
+            color: #fff;
+
+            font-size: 42px;
+
+            cursor: pointer;
+        }
+
+        .close-photo:hover {
+            color: #00eaff;
+        }
+
+
+
+
+
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+
+        footer {
+
+            padding: 30px 0 16px;
+
+            background:
+                rgba(0,3,8,.96);
+
+            border-top:
+                1px solid
+                rgba(0,239,255,.22);
+        }
+
+        footer .container {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: 20px;
+        }
+
+        footer p {
+            color: #82aeb8;
+            font-size: 14px;
+        }
+
+        .social a {
+
+            color: #b8dce4;
+
+            margin-left: 18px;
+
+            font-size: 20px;
+
+            transition: .3s ease;
+        }
+
+        .social a:hover {
+
+            color: #00eaff;
+
+            text-shadow:
+                0 0 10px #00eaff;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .hero .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-image img {
+                max-width: 400px;
+            }
+
+            .hero-title {
+                grid-template-columns: 1fr;
+            }
+
+            .about-meta {
+                justify-content: center;
+            }
+
+        }
+
+
+        @media (max-width: 768px) {
+
+            .hamburger {
+                display: block;
+            }
+
+            nav {
+                width: 100%;
+            }
+
+            nav ul {
+
+                display: none;
+
+                flex-direction: column;
+
+                width: 100%;
+
+                padding: 20px 0;
+
+                gap: 14px;
+            }
+
+            nav ul.open {
+                display: flex;
+            }
+
+            .hero-text h2 {
+                font-size: 38px;
+            }
+
+            .student-grid {
+                grid-template-columns:
+                    repeat(
+                        auto-fill,
+                        minmax(140px,1fr)
+                    );
+            }
+
+            .announce-wrap {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .announce-img {
+                width: 220px;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .logo img {
+                width: 42px;
+                height: 42px;
+            }
+
+            .logo h1 {
+                font-size: 20px;
+            }
+
+            .hero {
+                padding: 50px 0;
+            }
+
+            .hero-text h2 {
+                font-size: 30px;
+            }
+
+            .about-meta {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .wali-kelas-card,
+            .info-meta-card {
+                width: 100%;
+            }
+
+            .info-meta-card {
+                justify-content: flex-start;
+            }
+
+            .jabatan {
+                width: 90%;
+            }
+
+            .gallery-grid {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+        }
+
+
+        @media (max-width: 400px) {
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h2 {
+                font-size: 27px;
+            }
+
+        }
+
+        /* =====================================================
+           VISUAL KELAS — pembaruan: dokumentasi sekolah yang natural
+           ===================================================== */
+        #particleBackground,
+        .background-glow {
+            display: none;
+        }
+
+        body {
+            background: #f7f8fa;
+            color: #202938;
+        }
+
+        header {
+            background: rgba(255,255,255,.94);
+            border-bottom: 1px solid #e5e8ec;
+            box-shadow: 0 2px 12px rgba(25,35,50,.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo,
+        nav ul li a {
+            color: #20385f !important;
+            text-shadow: none !important;
+        }
+
+        nav ul li a.active,
+        nav ul li a:hover {
+            color: #b2831c !important;
+        }
+
+        .hero {
+            min-height: 560px;
+            padding: 80px 0;
+            background:
+                linear-gradient(90deg, rgba(16,34,61,.96), rgba(20,37,65,.76), rgba(20,37,65,.22)),
+                url('kelas 11(1).jpeg') center/cover;
+        }
+
+        .hero-text h2,
+        .hero-text p {
+            color: #fff;
+            text-shadow: none;
+        }
+
+        .hero-text h2 i {
+            color: #f0c34c;
+            text-shadow: none;
+        }
+
+        .hero-image {
+            display: none;
+        }
+
+        .btn {
+            background: #e6b43e;
+            color: #24375a;
+            border: 0;
+            border-radius: 5px;
+            box-shadow: none;
+            text-shadow: none;
+        }
+
+        .btn:hover {
+            background: #f0c34c;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(0,0,0,.15);
+        }
+
+        .about-class,
+        .schedule,
+        .students,
+        .gallery,
+        .announcement {
+            padding: 78px 0;
+        }
+
+        .section-title h3 {
+            color: #20385f;
+            text-shadow: none;
+        }
+
+        .section-title h3::after {
+            background: #e6b43e;
+            box-shadow: none;
+        }
+
+        .section-title p,
+        .about-text p,
+        .schedule-desc p {
+            color: #687384;
+        }
+
+        .hero-title,
+        .schedule-top,
+        .announce-wrap {
+            background: #fff;
+            border: 1px solid #e2e6eb;
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 6px 24px rgba(33,47,66,.06);
+        }
+
+        .hero-title .hero-image img,
+        .schedule-img img,
+        .announce-img img {
+            border-radius: 8px;
+            border: 0;
+            box-shadow: none;
+        }
+
+        .about-meta > *,
+        .wali-kelas-card,
+        .info-meta-card {
+            background: #fff !important;
+            border-color: #e2e6eb !important;
+            box-shadow: none !important;
+        }
+
+        .wali-kelas-card strong,
+        .info-meta-card strong,
+        .meta-item {
+            color: #20385f !important;
+            text-shadow: none !important;
+        }
+
+        .struktur {
+            background: #eef2f6;
+            border-top: 1px solid #e2e6eb;
+            border-bottom: 1px solid #e2e6eb;
+        }
+
+        .jabatan {
+            background: #fff !important;
+            border-color: #dfe5eb !important;
+            box-shadow: 0 3px 10px rgba(31,49,76,.06) !important;
+            color: #20385f !important;
+        }
+
+        .table-wrap {
+            background: #fff;
+            border: 1px solid #e0e5eb;
+            border-radius: 10px;
+            box-shadow: none;
+        }
+
+        table th {
+            background: #263d69 !important;
+            color: #fff !important;
+        }
+
+        table td {
+            color: #4f5e72 !important;
+            border-color: #e6e9ed !important;
+        }
+
+        .student-card {
+            background: #fff;
+            border: 1px solid #e0e5eb;
+            border-radius: 9px;
+            box-shadow: 0 3px 11px rgba(31,49,76,.05);
+        }
+
+        .student-card:hover {
+            transform: translateY(-3px);
+            border-color: #d6ae4b;
+            box-shadow: 0 8px 18px rgba(31,49,76,.09);
+        }
+
+        .student-card .avatar img {
+            border-radius: 8px;
+            border-color: #e6b43e;
+            box-shadow: none;
+        }
+
+        .student-card .name {
+            color: #273850;
+        }
+
+        .student-card .nis {
+            color: #8490a0;
+        }
+
+        .gallery {
+            background: #eef2f6;
+        }
+
+        .gallery-item {
+            height: 205px;
+            border-radius: 8px;
+            border: 0;
+            box-shadow: 0 4px 14px rgba(31,49,76,.10);
+        }
+
+        .gallery-item img {
+            filter: none;
+        }
+
+        footer {
+            background: #20385f;
+            border: 0;
+        }
+
+        footer p,
+        .social a {
+            color: #fff;
+        }
+
+        .social a:hover {
+            color: #f0c34c;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 510px;
+                background-position: 62% center;
+            }
+
+            .hero-title,
+            .schedule-top,
+            .announce-wrap {
+                padding: 18px;
+            }
+        }
+        /* Penyempurnaan tampilan akhir */
+        * { font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif; }
+        .container { max-width: 1160px; }
+        header { padding: 12px 0; }
+        .logo { gap: 10px; }
+        .logo img { display: none; }
+        .logo::before { content: "TAV"; display: grid; place-items: center; width: 39px; height: 39px; color: #fff; background: #263d69; border-radius: 7px; font-size: 11px; font-weight: 800; letter-spacing: .8px; }
+        .logo h1 { margin: 0; color: #172e53 !important; font-size: 17px; line-height: 1.1; letter-spacing: -.5px; text-shadow: none !important; }
+        .logo h1 span { color: #9a6c0d !important; text-shadow: none !important; }
+        nav ul { gap: 23px; }
+        nav ul li a { font-size: 13px; font-weight: 700; }
+        nav ul li a::after { background: #d6a839; height: 2px; }
+        .hero { position: relative; min-height: 590px; display: flex; align-items: center; isolation: isolate; }
+        .hero::after { content: "SMK MA'ARIF 2 GOMBONG"; position: absolute; right: 34px; bottom: 28px; z-index: -1; color: rgba(255,255,255,.82); font-size: 10px; font-weight: 700; letter-spacing: 1.8px; }
+        .hero-text { max-width: 620px; padding: 15px 0; }
+        .hero-text {
+            padding: 30px 0 32px;
+            background: transparent;
+            border: 0;
+            border-radius: 0;
+            box-shadow: none;
+        }
+        .hero-text h2 { max-width: 590px; margin-bottom: 18px; font-size: clamp(45px, 6vw, 72px); line-height: 1.03; letter-spacing: -3.2px; font-weight: 800; }
+        .hero-text h2 i { display: none; }
+        .hero-text h2::before { content: "MEMBACA MASA DEPAN, MERAKIT KENANGAN"; display: block; margin-bottom: 17px; color: #f0c34c; font-size: 11px; font-style: normal; font-weight: 700; line-height: 1; letter-spacing: 1.5px; }
+        .hero-text p { max-width: 460px; font-size: 16px; line-height: 1.8; color: #f3f6fb; }
+        .btn { padding: 13px 19px; font-size: 13px; font-weight: 800; }
+        .about-class h4, .schedule h4, .announce-text h4 { color: #1d3359; text-shadow: none; }
+        .about-text h4 { font-size: 31px; line-height: 1.2; letter-spacing: -1.2px; }
+        .about-text p { font-size: 15px; line-height: 1.85; color: #4d5b6e; }
+        .about-meta { gap: 10px; }
+        .wali-kelas-card, .info-meta-card { border-radius: 8px !important; }
+        .wali-kelas-card:hover, .info-meta-card:hover { transform: none; border-color: #d3ad55 !important; }
+        .wali-kelas-card img { border-radius: 7px; }
+        .section-title { margin-bottom: 42px; }
+        .section-title h3 { font-size: 32px; letter-spacing: -1.3px; }
+        .section-title p { font-size: 14px; line-height: 1.75; color: #526074; }
+        .schedule-top, .announce-wrap { gap: 34px; }
+        .schedule-img img, .announce-img img { min-height: 225px; }
+        .student-grid { gap: 14px; }
+        .student-card { padding: 17px 13px; }
+        .student-card .avatar img { width: 76px; height: 76px; }
+        .student-card .name { font-size: 13px; line-height: 1.4; }
+        .gallery-grid { gap: 16px; }
+        .gallery-item { background: #dfe5ec; }
+        .gallery-item img { transition: transform .35s ease; }
+        .announcement { padding-bottom: 92px; }
+        @media (max-width: 768px) {
+            header { padding: 10px 0; }
+            .hamburger { color: #263d69; }
+            .hero { min-height: 540px; }
+            .hero-text h2 { font-size: 44px; letter-spacing: -2px; }
+            .hero-text { padding: 25px 0; }
+            .hero::after { right: 20px; bottom: 22px; font-size: 8px; }
+            .hero-title { padding: 0; border: 0; background: transparent; box-shadow: none; }
+        }
+        /* Kontras teks: semua tulisan mendapat warna latar/warna yang tegas */
+        .hero-text h2,
+        .hero-text p {
+            color: #ffffff !important;
+        }
+
+        .hero-text h2::before {
+            color: #ffd65f;
+        }
+
+        .hero .btn {
+            background: #ffd65f;
+            color: #172e53;
+        }
+
+        .about-class,
+        .schedule,
+        .students,
+        .announcement {
+            background: #ffffff;
+        }
+
+        .section-title h3,
+        .about-text h4,
+        .schedule-desc h4,
+        .announce-text h4,
+        .struktur h1 {
+            color: #172e53 !important;
+        }
+
+        .about-text p,
+        .schedule-desc p,
+        .announce-text p,
+        .section-title p,
+        .date,
+        .table-wrap td,
+        .mapel,
+        .guru {
+            color: #334155 !important;
+            text-shadow: none !important;
+        }
+
+        .wali-kelas-card,
+        .info-meta-card,
+        .student-card,
+        .jabatan,
+        .schedule-top,
+        .announce-wrap {
+            color: #1e293b !important;
+            background: #ffffff !important;
+        }
+
+        .wali-kelas-card strong,
+        .info-meta-card strong,
+        .wali-kelas-card .meta-item,
+        .info-meta-card .meta-item,
+        .student-card .name,
+        .jabatan h3 {
+            color: #172e53 !important;
+        }
+
+        .student-card .nis,
+        .jabatan p {
+            color: #526074 !important;
+        }
+
+        .struktur {
+            background: #edf1f5;
+        }
+
+        .struktur h1 {
+            text-shadow: none !important;
+        }
+
+        .gallery-item {
+            position: relative;
+        }
+
+        .gallery-item::after {
+            content: "KELAS XI TAV";
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+            padding: 5px 8px;
+            color: #ffffff;
+            background: rgba(23,46,83,.92);
+            border-radius: 4px;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: .8px;
+            pointer-events: none;
+        }
+
+        footer,
+        footer p,
+        footer a {
+            color: #ffffff !important;
+        }
+        /* Kartu pengumuman */
+        .announcement {
+            background: #f3f6f9;
+        }
+
+        .announce-wrap {
+            max-width: 920px;
+            margin: auto;
+            padding: 18px !important;
+            border: 1px solid #dfe6ed;
+            border-left: 5px solid #d7a735;
+        }
+
+        .announce-img {
+            position: relative;
+            overflow: hidden;
+            border-radius: 7px;
+        }
+
+        .announce-img::after {
+            content: "AGENDA KELAS";
+            position: absolute;
+            left: 11px;
+            top: 11px;
+            padding: 6px 9px;
+            color: #fff;
+            background: #20385f;
+            border-radius: 4px;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: .9px;
+        }
+
+        .announce-img img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .announce-text {
+            padding: 9px 12px;
+        }
+
+        .announce-text h4 {
+            font-size: 24px;
+            letter-spacing: -.8px;
+        }
+
+        .announce-text h4 i {
+            color: #978250 !important;
+        }
+
+        .announce-text p strong {
+            color: #172e53;
+        }
+
+        .date {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-top: 4px;
+            padding: 7px 10px;
+            color: #40506a !important;
+            background: #eaf0f6;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .announce-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .announce-tags span {
+            padding: 7px 10px;
+            color: #344765;
+            background: #f2f5f8;
+            border: 1px solid #e1e7ed;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .announce-tags i {
+            margin-right: 5px;
+            color: #c18d13;
+        }
+        /* Struktur organisasi */
+        .struktur {
+            padding: 82px 20px 90px;
+            background: #eef2f6;
+        }
+
+        .struktur h1 {
+            margin: 0 0 34px;
+            font-size: 31px;
+            font-weight: 800;
+            letter-spacing: -1.2px;
+        }
+
+        .struktur .jabatan {
+            width: 210px;
+            min-width: 210px;
+            min-height: 198px;
+            margin: 0;
+            padding: 19px 16px;
+            border: 1px solid #dbe3eb !important;
+            border-top: 4px solid #c99a2d !important;
+            border-radius: 9px;
+            box-shadow: 0 5px 15px rgba(31,49,76,.08) !important;
+        }
+
+        .struktur > .jabatan {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .struktur .jabatan:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 22px rgba(31,49,76,.12) !important;
+        }
+
+        .struktur .jabatan img {
+            width: 78px;
+            height: 78px;
+            margin-bottom: 9px;
+            border: 3px solid #edf1f5;
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px #c99a2d;
+        }
+
+        .struktur .jabatan h3 {
+            margin: 5px 0 4px;
+            color: #172e53 !important;
+            font-size: 14px;
+            line-height: 1.35;
+        }
+
+        .struktur .jabatan p {
+            display: inline-block;
+            margin: 0;
+            padding: 4px 9px;
+            color: #7c5a12 !important;
+            background: #fff4d6;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .struktur .garis-vertikal {
+            width: 2px;
+            height: 30px;
+            margin: 0 auto;
+            background: #c7d1dc;
+            box-shadow: none;
+        }
+
+        .struktur .baris {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(185px, 210px));
+            justify-content: center;
+            max-width: 940px;
+            gap: 18px;
+            margin: 0 auto;
+            padding-top: 27px;
+        }
+
+        .struktur .baris::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 9%;
+            right: 9%;
+            height: 2px;
+            background: #c7d1dc;
+        }
+
+        .struktur .baris .jabatan {
+            position: relative;
+        }
+
+        .struktur .baris .jabatan::before {
+            content: "";
+            position: absolute;
+            top: -27px;
+            left: 50%;
+            width: 2px;
+            height: 27px;
+            background: #c7d1dc;
+            transform: translateX(-50%);
+        }
+
+        .struktur > .jabatan:first-of-type::after,
+        .struktur > .garis-vertikal + .jabatan::after {
+            display: block;
+            margin-top: 8px;
+            color: #78869a;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: .9px;
+        }
+
+        .struktur > .jabatan:first-of-type::after {
+            content: "01 · KETUA KELAS";
+        }
+
+        .struktur > .garis-vertikal + .jabatan::after {
+            content: "02 · WAKIL KETUA";
+        }
+
+        .struktur .pengurus-inti::after,
+        .struktur .divisi-kelas::after {
+            position: absolute;
+            top: -9px;
+            left: 50%;
+            z-index: 1;
+            padding: 0 10px;
+            color: #6d7a8d;
+            background: #eef2f6;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: .85px;
+            white-space: nowrap;
+            transform: translateX(-50%);
+        }
+
+        .struktur .pengurus-inti::after {
+            content: "03 · SEKRETARIS & BENDAHARA";
+        }
+
+        .struktur .divisi-kelas::after {
+            content: "04 · DIVISI KELAS";
+        }
+
+        @media (max-width: 650px) {
+            .struktur {
+                padding: 62px 16px;
+            }
+
+            .struktur h1 {
+                font-size: 26px;
+            }
+
+            .struktur .baris {
+                grid-template-columns: repeat(2, minmax(145px, 1fr));
+                gap: 12px;
+            }
+
+            .struktur .jabatan,
+            .struktur > .jabatan {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .struktur > .jabatan {
+                max-width: 210px;
+            }
+
+            .struktur .baris::before {
+                display: none;
+            }
+
+            .struktur .baris .jabatan::before {
+                display: none;
+            }
+
+            .struktur .baris {
+                padding-top: 0;
+            }
+
+            .struktur .pengurus-inti::after,
+            .struktur .divisi-kelas::after {
+                display: none;
+            }
+        }
+        /* Logo XI TAV pada header */
+        .logo::before {
+            display: none;
+        }
+
+        .logo img {
+            display: block;
+            width: 46px;
+            height: 46px;
+            padding: 2px;
+            object-fit: contain;
+            background: #101010;
+            border: 1px solid #d39d24;
+            border-radius: 7px;
+            box-shadow: none;
+        }
+
+        /* Bagan organisasi di layar HP */
+        @media (max-width: 650px) {
+            .struktur {
+                padding: 56px 14px 64px;
+            }
+
+            .struktur h1 {
+                margin-bottom: 26px;
+                font-size: 24px;
+            }
+
+            .struktur > .jabatan {
+                max-width: 235px;
+                min-height: 185px;
+            }
+
+            .struktur .garis-vertikal {
+                display: none;
+            }
+
+            .struktur .pengurus-inti {
+                grid-template-columns: minmax(0, 235px);
+                justify-content: center;
+                margin-top: 16px;
+            }
+
+            .struktur .divisi-kelas {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px;
+                margin-top: 18px;
+            }
+
+            .struktur .jabatan {
+                min-width: 0;
+                min-height: 172px;
+                padding: 15px 9px;
+            }
+
+            .struktur .jabatan img {
+                width: 62px;
+                height: 62px;
+            }
+
+            .struktur .jabatan h3 {
+                font-size: 12px;
+            }
+
+            .struktur .jabatan p {
+                font-size: 10px;
+            }
+
+            .struktur > .jabatan:first-of-type {
+                margin-bottom: 15px;
+            }
+
+            .struktur > .garis-vertikal + .jabatan {
+                margin-top: 15px;
+            }
+        }
+
+        /* Tablet: 769px–1024px */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            nav ul {
+                gap: 16px;
+            }
+
+            nav ul li a {
+                font-size: 12px;
+            }
+
+            .hero {
+                min-height: 530px;
+                background-position: 58% center;
+            }
+
+            .hero-text h2 {
+                font-size: clamp(46px, 6vw, 59px);
+            }
+
+            .student-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .struktur .divisi-kelas {
+                grid-template-columns: repeat(2, 210px);
+            }
+        }
+
+        /* HP: sampai 768px */
+        @media (max-width: 768px) {
+            header .container {
+                position: relative;
+            }
+
+            nav {
+                position: absolute;
+                top: 55px;
+                right: 0;
+                left: 0;
+                z-index: 20;
+            }
+
+            nav ul.open {
+                padding: 14px 20px 18px;
+                background: #ffffff;
+                border: 1px solid #e0e6ed;
+                border-radius: 0 0 9px 9px;
+                box-shadow: 0 10px 20px rgba(31,49,76,.12);
+            }
+
+            nav ul.open li a {
+                display: block;
+                color: #172e53 !important;
+            }
+
+            .hero .container {
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            .hero-text p {
+                margin-left: 0;
+            }
+
+            .student-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px;
+            }
+
+            footer .container {
+                flex-direction: column;
+                gap: 14px;
+                text-align: center;
+            }
+        }
+
+        /* Laptop dan desktop: 1025px ke atas */
+        @media (min-width: 1025px) {
+            .student-grid {
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+
+        /* Tombol dan tema malam */
+        .theme-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-left: 18px;
+            padding: 8px 11px;
+            color: #20385f;
+            background: #f2f5f8;
+            border: 1px solid #dce3ea;
+            border-radius: 6px;
+            font: 700 11px 'Plus Jakarta Sans', sans-serif;
+            cursor: pointer;
+            transition: background .2s ease, color .2s ease, border-color .2s ease;
+        }
+
+        .theme-toggle:hover {
+            color: #172e53;
+            background: #fff4d6;
+            border-color: #d6a839;
+        }
+
+        .theme-toggle i {
+            color: #b68112;
+            font-size: 13px;
+        }
+
+        body.night-mode {
+            background: #101722;
+            color: #e7edf5;
+        }
+
+        body.night-mode header {
+            background: rgba(16,23,34,.96);
+            border-color: #2d3a4d;
+            box-shadow: 0 2px 12px rgba(0,0,0,.22);
+        }
+
+        body.night-mode .hero {
+            background:
+                linear-gradient(90deg, rgba(5,11,21,.98), rgba(10,18,33,.88), rgba(10,18,33,.45)),
+                url('kelas 11(1).jpeg') center/cover;
+        }
+
+        body.night-mode .hero-text h2,
+        body.night-mode .hero-text p {
+            color: #f7f9fc !important;
+        }
+
+        body.night-mode .hero-text h2::before,
+        body.night-mode .hero h2 i {
+            color: #f5c64e !important;
+        }
+
+        body.night-mode .hero::after {
+            color: rgba(226,234,244,.68);
+        }
+
+        body.night-mode .hero .btn {
+            color: #121c2a;
+            background: #f5c64e;
+        }
+
+        body.night-mode .hero .btn:hover {
+            color: #121c2a;
+            background: #ffe18a;
+        }
+
+        body.night-mode .logo h1,
+        body.night-mode nav ul li a,
+        body.night-mode nav ul.open li a {
+            color: #f0f4f9 !important;
+        }
+
+        body.night-mode .logo h1 span,
+        body.night-mode nav ul li a.active,
+        body.night-mode nav ul li a:hover {
+            color: #f0bd42 !important;
+        }
+
+        body.night-mode .theme-toggle {
+            color: #eef4fa;
+            background: #1c2939;
+            border-color: #40526a;
+        }
+
+        body.night-mode .theme-toggle:hover {
+            color: #fff;
+            background: #263b54;
+            border-color: #f0bd42;
+        }
+
+        body.night-mode .theme-toggle i {
+            color: #f0bd42;
+        }
+
+        body.night-mode nav ul.open {
+            background: #172334;
+            border-color: #3a4c63;
+            box-shadow: 0 10px 22px rgba(0,0,0,.35);
+        }
+
+        body.night-mode nav ul.open li a {
+            color: #eef4fa !important;
+        }
+
+        body.night-mode nav ul.open li a.active,
+        body.night-mode nav ul.open li a:hover {
+            color: #f5c64e !important;
+        }
+
+        body.night-mode .about-class,
+        body.night-mode .schedule,
+        body.night-mode .students,
+        body.night-mode .announcement {
+            background: #101722;
+        }
+
+        body.night-mode .gallery,
+        body.night-mode .struktur {
+            background: #161f2c;
+            border-color: #2d3a4d;
+        }
+
+        body.night-mode .section-title h3,
+        body.night-mode .about-text h4,
+        body.night-mode .schedule h4,
+        body.night-mode .announce-text h4,
+        body.night-mode .struktur h1,
+        body.night-mode .wali-kelas-card strong,
+        body.night-mode .info-meta-card strong,
+        body.night-mode .student-card .name,
+        body.night-mode .jabatan h3 {
+            color: #f0f4f9 !important;
+        }
+
+        body.night-mode .section-title p,
+        body.night-mode .about-text p,
+        body.night-mode .schedule-desc p,
+        body.night-mode .announce-text p,
+        body.night-mode .date,
+        body.night-mode .mapel,
+        body.night-mode .guru,
+        body.night-mode .student-card .nis,
+        body.night-mode .jabatan p {
+            color: #b9c5d3 !important;
+        }
+
+        body.night-mode .hero-title,
+        body.night-mode .schedule-top,
+        body.night-mode .announce-wrap,
+        body.night-mode .wali-kelas-card,
+        body.night-mode .info-meta-card,
+        body.night-mode .student-card,
+        body.night-mode .jabatan,
+        body.night-mode .table-wrap {
+            background: #1b2635 !important;
+            border-color: #344458 !important;
+            box-shadow: 0 6px 20px rgba(0,0,0,.18) !important;
+        }
+
+        body.night-mode .info-meta-icon,
+        body.night-mode .meta-item,
+        body.night-mode .wali-kelas-card .meta-item {
+            color: #f0bd42 !important;
+        }
+
+        body.night-mode .jabatan p {
+            background: #2d3e52;
+            color: #f3c95b !important;
+        }
+
+        body.night-mode .struktur .pengurus-inti::after,
+        body.night-mode .struktur .divisi-kelas::after {
+            background: #161f2c;
+            color: #b9c5d3;
+        }
+
+        body.night-mode .struktur .garis-vertikal,
+        body.night-mode .struktur .baris::before,
+        body.night-mode .struktur .baris .jabatan::before {
+            background: #64758b;
+        }
+
+        body.night-mode table th {
+            background: #2b466f !important;
+        }
+
+        body.night-mode table td {
+            color: #c7d2df !important;
+            border-color: #344458 !important;
+        }
+
+        body.night-mode tr:hover td {
+            background: #243246;
+        }
+
+        body.night-mode .date,
+        body.night-mode .announce-tags span {
+            background: #263448;
+            border-color: #40526a;
+        }
+
+        @media (max-width: 768px) {
+            .theme-toggle {
+                margin-left: auto;
+                margin-right: 13px;
+            }
+
+            .theme-toggle span {
+                display: none;
+            }
+
+            .theme-toggle i {
+                margin: 0 1px;
+            }
+        }
